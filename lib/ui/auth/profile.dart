@@ -12,6 +12,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_fade/image_fade.dart';
 import 'package:need_resume/need_resume.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -223,6 +224,14 @@ class _ProfileState extends ResumableState<Profile> {
                                                   _goToSubscriptions();
                                                 });
                                               }),
+                                          ListTile(
+                                            onTap: () async {
+                                              if (!await launchUrl(Uri.parse("https://razorpay.me/@allroundershop?amount=n%2FUUsdogj%2F7sarE2WD13qg%3D%3D"))) {
+                                              throw Exception('Could not launch');
+                                              }
+                                            },
+                                            title: Text("RazorPay",style: TextStyle(color: Colors.white),),
+                                          ),
                                           ProfileItemWidget(
                                               icon: Icons.lock,
                                               title: "Change password",
